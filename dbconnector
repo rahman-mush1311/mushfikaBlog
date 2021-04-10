@@ -1,0 +1,12 @@
+docker-compose exec php bash
+php artisan migrate
+exit
+exit
+docker exec -it init-docker_database_1 bash
+mysql
+mysql -u root -p
+password = 'docker_pass'
+we are in mysql command
+
+permission change to edit
+sudo chown -R mushfika:mushfika init-docker

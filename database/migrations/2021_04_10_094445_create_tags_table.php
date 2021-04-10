@@ -19,7 +19,7 @@ class CreateTagsTable extends Migration
             $table->timestamps();
         });
         //writing convention firstTablenamein singular form_ secondTablenamein singular
-        Schema::create('posts_tag', function (Blueprint $table) {
+       /* Schema::create('posts_tag', function (Blueprint $table) {
             $table->id();
             //->string('name');
             $table->unsignedBigInteger('post_id');
@@ -37,7 +37,7 @@ class CreateTagsTable extends Migration
                 ->references('id')
                 ->on('tags')
                 ->onDelete('cascade');
-        });
+        });*/
     }
 
     /**

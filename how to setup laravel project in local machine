@@ -1,0 +1,32 @@
+notun laravel jebhabe setup korbo
+cd 'desired directory'
+directory te jawar por
+composer create-project laravel/laravel:^7.0 'project_name_i want to setup'
+cd 'go to the directory of the project'
+php artisan serve
+https:je address deya thakbe oitay giye browser e run korabo
+
+kibhabe mysql & apache2 status check korbo
+sudo service mysql status
+service apache2 status
+
+Notun Database create korte
+sudo mysql
+eita likhle mysql command e jabe
+create database 'new database name';
+query okay hoile
+.env file e giye database name change korte hobe
+db beaver eo connection dite hobe.
+
+npm install korte
+composer require laravel/ui "^2.0"
+npm install
+npm run dev
+
+Faker diye kibhabe kaj korbo
+use Illuminate\Database\Eloquent\Factory\HasFactory;
+eita import korte hobe
+php artisan tinker e giye factory method run koraite hobe
+factory(App\'DesiredTable'::class,'no of records to use')->create();
+factory te kibhabe override kora jay:
+factory(App\'DesiredTable'::class,'no of records to use')->create(['name_of the collum to override'=>'value']);

@@ -1,0 +1,7 @@
+tags table e pivot table er code tuku comment out korechi.
+post table e user_id er forerign key constraint shoriye diychi karon amar form e ami eitar kaj kori nai ekhono. 
+PostsFactory te user_id comment out korechi. 
+
+exsisting view er single view dekhte gele template ulta palta hoye jay
+
+update dile update hy kintu template ulta palta hoye jay. 
