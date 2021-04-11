@@ -19,16 +19,16 @@ class CreateTagsTable extends Migration
             $table->timestamps();
         });
         //writing convention firstTablenamein singular form_ secondTablenamein singular
-       /* Schema::create('posts_tag', function (Blueprint $table) {
-            $table->id();
+        Schema::create('posts_tag', function (Blueprint $table) {
+            //$table->id();
             //->string('name');
-            $table->unsignedBigInteger('post_id');
+            $table->unsignedBigInteger('posts_id');
             $table->unsignedBigInteger('tag_id');
             $table->timestamps();
 
-            $table->unique(['post_id','tag_id']);
+            $table->primary(['posts_id','tag_id']);
 
-            $table->foreign('post_id')
+            $table->foreign('posts_id')
                 ->references('id')
                 ->on('posts')
                 ->onDelete('cascade');
@@ -37,7 +37,7 @@ class CreateTagsTable extends Migration
                 ->references('id')
                 ->on('tags')
                 ->onDelete('cascade');
-        });*/
+        });
     }
 
     /**
@@ -48,5 +48,6 @@ class CreateTagsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('tags');
+        Schema::dropIfExists('posts_tag');
     }
 }

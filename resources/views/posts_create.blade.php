@@ -38,7 +38,21 @@
 
                             <label for="des">Description</label>
                             <textarea id="des" name="des" placeholder="Description goes here" style="height:200px"></textarea>
-
+                            <div class="control ">
+                            <label for=""tag> Tags For Your Article
+                                <select
+                                     name ="tags[]"
+                                     multiple
+                                    >
+                                      @foreach($tags as $tag)
+                                          <option value="{{$tag->id}}"> {{$tag->name}} </option>
+                                      @endforeach
+                                    </select>
+                                </label>
+                                @error('tags')
+                                <p class="help is-danger">{{$message}}</p>
+                            @enderror
+                            </div>
                             <input type="submit" value="Create Post">
                         </form>
 

@@ -21,7 +21,7 @@
             <li><a href="/update">Update</a></li>
             <li><a href="{{route('posts.index')}}">About</a></li>
             <li><a href="/posts">Posts</a></li>
-            <li><a href="/Contact">Create Blog</a></li>
+            <li><a href="/create">Create Blog</a></li>
         </ul>
     </div>
     <!-- end #menu -->

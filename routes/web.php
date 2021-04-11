@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Posts;
+//use App\Http\Controllers\PostsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,11 +31,19 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('welcomepage');
 });
-Route::get('/Contact', function () {
-    return view('posts_create');
-});
-Route::get('/update', function () {
+
+Route::get('/create','PostsController@create');
+Route::get('/about','PostsController@index');
+Route::get('/update','PostsController@edit');
+
+
+/*Route::get('/update', function () {
     return view('post_update');
-});
-Route::resource("about",PostsController::class);
+});*/
+//Route::resource("Create_Blog",'PostsController@create');
+//Route::resource("about",PostsController::class);
 Route::resource("posts",PostsController::class);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

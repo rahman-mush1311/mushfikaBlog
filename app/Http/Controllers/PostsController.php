@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Posts;
+use App\Tag;
 use Illuminate\Http\Request;
 use DB;
 
@@ -27,50 +28,69 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        //return "route working";
+       return view('posts_create', ['tags'=>Tag::all()]);
     }
 
 
     public function store(Request $request)
     {
+       // return "routing is working";
+        //return dd($request->all());
+
         $res = new Posts;
         $res->title=$request->input('title');
         $res->short=$request->input('short');
         $res->des=$request->input('des');
+        $res->user_id=1;
         $res->save();
 
-        $posts = Posts::all();
-        return view('about',compact('posts'));
-        //return $request;
+        $res->tag()->attach($request->get('tags'));
+
+        return redirect ('about');
+        //return dd($request->get('tags'));
+
+       // $res->save();
+
+       // $posts = Posts::all();
+       // return view('about',compact('posts'));
+       // return $request;
     }
 
 
     public function show(Posts $posts,$id)
     {
         $posts = Posts::find($id);
-        return view('posts',compact('posts'));
+        return view ('posts',compact('posts'));
         //return $posts;
     }
 
 
     public function edit(Posts $posts)
     {
-        //
+      //  return "edit route working";
+        return view('post_update');
     }
 
 
     public function update(Request $request,  $id)
     {
-        $postsLst = Posts::find($id);
-        $postsLst->title=$request->input('title');
-        $postsLst->short=$request->input('short');
-        $postsLst->des=$request->input('des');
-        $postsLst->save();
-        return $this->index();
+       // return view('posts_update', ['tags'=>Tag::all()]);
+       /* $posts = Posts::find($id);
+        $posts->title=$request->input('title');
+        $posts->short=$request->input('short');
+        $posts->des=$request->input('des');
+        $posts->save();*/
+        //return "update route working";
+
+        //$posts = Posts::all();
+        //return $posts;
+       // return view('about',compact('posts'));
+      //  return $this->index();
 
        // Route::redirect('about');
        // Route::resource("about",PostsController::class,['index']);
-       // return view('about')->with('posts',Posts::all());
+        return redirect ('about');
     }
 
 
