@@ -6,6 +6,7 @@ use App\Posts;
 use App\Tag;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class PostsController extends Controller
@@ -97,5 +98,11 @@ class PostsController extends Controller
     public function destroy(Posts $posts)
     {
         //
+    }
+    public function logout(Request $request)
+    {
+        $request->session()->flush();
+        Auth::logout();
+        return redirect('LoginController');
     }
 }

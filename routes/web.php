@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Posts;
+use App\Http\Controllers\Auth\LoginController;
 //use App\Http\Controllers\PostsController;
 
 
@@ -37,6 +38,7 @@ Route::get('/about','PostsController@index');
 Route::get('/update','PostsController@edit');
 
 
+
 /*Route::get('/update', function () {
     return view('post_update');
 });*/
@@ -45,5 +47,5 @@ Route::get('/update','PostsController@edit');
 Route::resource("posts",PostsController::class);
 
 Auth::routes();
-
+//Route::post('logout','PostsController@logout');
 Route::get('/home', 'HomeController@index')->name('home');

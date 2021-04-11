@@ -17,7 +17,15 @@
     <div id="menu">
         <ul>
             <li class="current_page_item"><a href="#">Home</a></li>
-            <li><a href="#">Blog</a></li>
+            <li><a href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+            </li>
             <li><a href="/update">Update</a></li>
             <li><a href="{{route('posts.index')}}">About</a></li>
             <li><a href="/posts">Posts</a></li>
@@ -64,5 +72,7 @@
         </div>
     </div>
     <!-- end #page -->
+
+
 </div>
 @endsection
