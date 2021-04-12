@@ -17,15 +17,17 @@ Released   : 20111121
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Blackwhite by TEMPLATED</title>
     <link href='http://fonts.googleapis.com/css?family=Nova+Mono' rel='stylesheet' type='text/css' />
-    <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+   <!-- <link href="style.css" rel="stylesheet" type="text/css" media="screen" />-->
+    <link href="{{asset('/')}}/style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
 @yield('header')
 @yield('content')
 
-<div id="footer">
+<!--<div id="footer">
     <p>&copy; Untitled. All rights reserved. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
 </div>
+-->
 <!-- end #footer -->
 </body>
 </html>

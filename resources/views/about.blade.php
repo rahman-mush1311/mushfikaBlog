@@ -31,7 +31,7 @@
                         <div id="content">
                             @foreach($posts as $post)
                             <div class="post">
-                                <h2 class="title"><a href="#">{{$post->title}} </a></h2>
+                                <h2 class="title">{{$post->title}} </h2>
                                 <p class="meta">Posted by <a href="#">Someone</a> {{$post->created_at}}
                                     &nbsp;&bull;&nbsp; <a href="#" class="comments"></a> &nbsp;&bull;&nbsp; <a href="{{route('posts.show',$post->id)}}" class="permalink">Full article</a></p>
                                 <div class="entry">

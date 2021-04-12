@@ -63,7 +63,7 @@ class PostsController extends Controller
     {
         $posts = Posts::find($id);
         return view ('posts',compact('posts'));
-        //return $posts;
+       // return $posts->user->name;
     }
 
 
@@ -104,5 +104,12 @@ class PostsController extends Controller
         $request->session()->flush();
         Auth::logout();
         return redirect('LoginController');
+    }
+    public function blog_show(Posts $posts)
+    {
+        $user= Auth::user()->id;
+        $posts = Posts::all()->where('user_id',$user);
+        return view('about',compact('posts'));
+
     }
 }

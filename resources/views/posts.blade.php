@@ -5,13 +5,12 @@
         <div id="header-wrapper">
             <div id="header">
                 <div id="logo">
-                    <h1>Indiviual Post Section with Tags </h1>
-                    <p>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a></p>
+                    <h1>Indiviual Post Section  </h1>
                 </div>
             </div>
         </div>
 @endsection
-    @section('content')
+@section('content')
         <!-- end #header -->
             <div id="menu">
                 <ul>
@@ -30,19 +29,35 @@
                         <div id="content">
                                 <div class="post">
                                     <h2 class="title">{{$posts->title}}</h2>
-                                    <p class="meta" Posted by Someone ></p>
-                                        &nbsp;&bull;&nbsp; <a href="#" class="comments"></a> &nbsp;&bull;&nbsp;{{$posts->short}}
+                                    <p class="meta"  > Posted By:&nbsp <strong>{{$posts->user->name}}</strong> </p>
+                                        &nbsp;&bull;&nbsp; <a href="#" class="comments"></a> &nbsp;&bull;&nbsp;
                                     <div class="entry">
-                                        <p><img src="images/img03.jpg" width="186" height="186" alt="" class="alignleft border" /> {{$posts->des}}</p>
-                                        @foreach($posts->tag as $tags)
-                                        <p> {{$tags->name}}</p>
-                                        @endforeach
+                                        <p><img src="{{asset('/images/img03.jpg')}}" width="186" height="186" alt="" class="alignleft border" /> </p>
+
                                     </div>
                                 </div>
 
 
                             <div style="clear: both;">&nbsp;</div>
-                        </div>
+                            <div class="container">
+                                <hr>
+                                @auth
+                                    <comments>
+                                        comment section
+                                    </comments>
+                            </div>
+                                 <hr>
+                            <div>
+                                <form method="POST" action="">
+                                    @csrf
+                                    <label for="comment">POSTS COMMENTS</label>
+                                    <br>
+                                    <textarea rows="3" cols="80" name="comment"> </textarea>
+                                    <br>
+                                    <input type="submit" value="Insert Comment">
+                                </form>
+                                @endauth
+                            </div>
                         <!-- end #content -->
 
                         <!-- end #sidebar -->
@@ -51,6 +66,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- end #page -->
     </div>
 

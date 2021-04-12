@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Posts;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 //use App\Http\Controllers\PostsController;
 
@@ -20,32 +21,16 @@ use App\Http\Controllers\Auth\LoginController;
 Route::get('/', function () {
     return view('welcome');
 });
-/*Route::get('/about', function () {
-    $posts = Posts::all();
-    return view('about',compact('posts'));
-});*/
-/*Route::get('/posts', function () {
-    return view('posts');
-});
-*/
-
 Route::get('/home', function () {
     return view('welcomepage');
 });
-
-Route::get('/create','PostsController@create');
 Route::get('/about','PostsController@index');
-Route::get('/update','PostsController@edit');
-
-
-
-/*Route::get('/update', function () {
-    return view('post_update');
-});*/
-//Route::resource("Create_Blog",'PostsController@create');
-//Route::resource("about",PostsController::class);
+Route::get('/blog','PostsController@blog_show');
 Route::resource("posts",PostsController::class);
 
 Auth::routes();
-//Route::post('logout','PostsController@logout');
 Route::get('/home', 'HomeController@index')->name('home');
+if(Auth::check()) {
+    Route::get('/create', 'PostsController@create');
+    Route::get('/update','PostsController@edit');
+}
