@@ -30,10 +30,15 @@
                                 <div class="post">
                                     <h2 class="title">{{$posts->title}}</h2>
                                     <p class="meta"  > Posted By:&nbsp <strong>{{$posts->user->name}}</strong> </p>
-                                        &nbsp;&bull;&nbsp; <a href="#" class="comments"></a> &nbsp;&bull;&nbsp;
+                                       <!-- &nbsp;&bull;&nbsp; <a href="#" class="comments"></a> &nbsp;&bull;&nbsp; -->
                                     <div class="entry">
                                         <p><img src="{{asset('/images/img03.jpg')}}" width="186" height="186" alt="" class="alignleft border" /> </p>
-
+                                        @foreach($posts->tag as $tags)
+                                        <p>{{$tags->name}}</p>
+                                        @endforeach
+                                        @if(Auth::user()->id == $posts->user->id)
+                                            <p>Delete Button will be places here</p>
+                                        @endif
                                     </div>
                                 </div>
 

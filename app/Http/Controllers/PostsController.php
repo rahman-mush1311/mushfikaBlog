@@ -44,9 +44,9 @@ class PostsController extends Controller
         $res->short=$request->input('short');
         $res->des=$request->input('des');
         $res->user_id=1;
-        $res->save();
+       // $res->save();
 
-        $res->tag()->attach($request->get('tags'));
+      //  $res->tag()->attach($request->get('tags'));
 
         return redirect ('about');
         //return dd($request->get('tags'));
