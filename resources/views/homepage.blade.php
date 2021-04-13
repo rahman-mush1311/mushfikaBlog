@@ -53,11 +53,17 @@
                             @endforeach
                             @elseguest
                                 Please Register to see the blog posts.
-                            @endauth
+
                             <div style="clear: both;">&nbsp;</div>
                         </div>
                         <!-- end #content -->
-
+                        <div class="topnav">
+                            <form class="example" action="{{}}" style="margin:auto;max-width:300px">
+                                <input type="text" placeholder="Search.." name="search">
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                         @endauth
                         <!-- end #sidebar -->
                         <div style="clear: both;">&nbsp;</div>
                     </div>

@@ -66,7 +66,12 @@
                     <div style="clear: both;">&nbsp;</div>
                 </div>
                 <!-- end #content -->
-
+                <div class="topnav">
+                    <form class="example" action="{{route('comment.index')}}" style="margin:auto;max-width:300px">
+                        <input type="text" placeholder="Search.." name="search">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
                 <!-- end #sidebar -->
                 <div style="clear: both;">&nbsp;</div>
             </div>

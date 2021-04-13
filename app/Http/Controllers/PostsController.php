@@ -118,4 +118,9 @@ class PostsController extends Controller
         $posts = Posts::all();
         return view('about',compact('posts'));
     }
+    public function search_show()
+    {
+        if(request()->input('search'))
+            dd(request()->query('search'));
+    }
 }

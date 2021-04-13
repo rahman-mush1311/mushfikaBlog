@@ -33,7 +33,7 @@ class CommentController extends Controller
 
     public function index()
     {
-        //
+        dd(request()->query('search'));
     }
 
     public function create()
@@ -60,7 +60,10 @@ class CommentController extends Controller
 
     public function show(Comment $comment)
     {
-        //
+        //$posts = new Posts;
+
+        //dd($comment->input('search'));
+
     }
 
 

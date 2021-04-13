@@ -17,6 +17,7 @@ Released   : 20111121
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Blackwhite by TEMPLATED</title>
     <link href='http://fonts.googleapis.com/css?family=Nova+Mono' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <!-- <link href="style.css" rel="stylesheet" type="text/css" media="screen" />-->
     <link href="{{asset('/')}}/style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
