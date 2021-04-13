@@ -19,18 +19,23 @@ use App\Http\Controllers\Auth\LoginController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome'); //laravel er view ta return korbe
 });
-Route::get('/home', function () {
+Route::get('/welcomepage', function () {
     return view('welcomepage');
 });
-Route::get('/about','PostsController@index');
-Route::get('/blog','PostsController@blog_show');
-Route::resource("posts",PostsController::class);
+Route::get('/about','PostsController@about_index'); //return a view(homepage.blade.php) with all the posts in database; for the guests
+//Route::get('/homepage','PostsController@index'); //return a view (homepage.blade.php) with all the posts in database, home button e click korle kaj korbe.
+Route::get('/blog','PostsController@blog_show'); //return a view(about.blade.php) with posts of particular users all posts.
+Route::get('/create', 'PostsController@create'); // return a view (posts_create.blade.php)
+Route::get('/update','PostsController@edit'); // return a view (posts_update.blade.php)
+Route::post("save_comment/{postid}",'CommentController@save_comment');
+
+Route::resource("posts",PostsController::class); //posts url jekhane pabe controller class er show method e giye particular post k show kore post.blade.php view return korbe
+Route::resource("comment",CommentController::class);// apatoto commentcontroller class er store method tai kaj kortese
+
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-if(Auth::check()) {
-    Route::get('/create', 'PostsController@create');
-    Route::get('/update','PostsController@edit');
-}
+
+

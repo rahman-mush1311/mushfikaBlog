@@ -5,8 +5,14 @@
         <div id="header-wrapper">
             <div id="header">
                 <div id="logo">
-                    <h1><a href="#">All blogs Section </a></h1>
-                    <p>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a></p>
+                    @auth
+                        <h1><a href="#">All blogs of {{Auth::user()->name}} </a></h1>
+                        <p>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a></p>
+                    @elseguest
+                    <h1><a href="#">Hi Guest Please Sign in </a></h1>
+                        <p>By clicking home you will be redirected to loginpage <a> </a></p>
+                    @endauth
+
                 </div>
             </div>
         </div>
@@ -16,12 +22,12 @@
         <!-- end #header -->
             <div id="menu">
                 <ul>
-                    <li class="current_page_item"><a href="#">Home</a></li>
-                    <li><a href="#">Blog</a></li>
+                    <li class="current_page_item"><a href="/home">Home</a></li>
+                 <!--   <li><a href="#">Blog</a></li>
                     <li><a href="#">Photos</a></li>
                     <li><a href="/about">About</a></li>
                     <li><a href="#">Posts</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Contact</a></li> -->
                 </ul>
             </div>
             <!-- end #menu -->
@@ -33,7 +39,9 @@
                             <div class="post">
                                 <h2 class="title">{{$post->title}} </h2>
                                 <p class="meta">Posted by <a href="#">Someone</a> {{$post->created_at}}
+
                                     &nbsp;&bull;&nbsp; <a href="#" class="comments"></a> &nbsp;&bull;&nbsp; <a href="{{route('posts.show',$post->id)}}" class="permalink">Full article</a></p>
+
                                 <div class="entry">
                                     <p><img src="images/img03.jpg" width="186" height="186" alt="" class="alignleft border" />{{$post->short}}</p>
                                     <p> {{$post->des}}</p>

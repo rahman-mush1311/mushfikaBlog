@@ -28,6 +28,7 @@
             <div id="page">
                 <div id="page-bgtop">
                     <div id="page-bgbtm">
+                        @auth
                         <form method="POST" action="{{route('posts.update',1)}}">
                             @csrf
                             @method('PUT')
@@ -42,7 +43,9 @@
 
                             <input type="submit" value="Update Post">
                         </form>
-
+                        @elseguest
+                            <p>Please Login to Create & Update a post</p>
+                        @endauth
                         <div style="clear: both;">&nbsp;</div>
                     </div>
                     <!-- end #content -->

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Posts;
 use App\Tag;
+use App\Comment;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,7 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Posts::all();
-        return view('about',compact('posts'));
+        return view('homepage',compact('posts'));
     }
 
     /**
@@ -43,27 +44,27 @@ class PostsController extends Controller
         $res->title=$request->input('title');
         $res->short=$request->input('short');
         $res->des=$request->input('des');
-        $res->user_id=1;
-       // $res->save();
+        $res->user_id=Auth::user()->id;
 
-      //  $res->tag()->attach($request->get('tags'));
+        $res->save();
 
-        return redirect ('about');
-        //return dd($request->get('tags'));
+        $res->tag()->attach($request->get('tags'));
 
-       // $res->save();
-
-       // $posts = Posts::all();
+        $posts = Posts::all();
+        return redirect('blog');
        // return view('about',compact('posts'));
-       // return $request;
     }
 
 
     public function show(Posts $posts,$id)
     {
         $posts = Posts::find($id);
-        return view ('posts',compact('posts'));
-       // return $posts->user->name;
+        $comment=DB::table('comments')
+                ->join('posts','comments.posts_id','=','posts.id')->where('comments.posts_id',$posts->id)
+                ->join('users','comments.user_id', '=','users.id')
+                ->get();
+        //return dd($comment);
+        return view ('posts',compact('posts','comment'));
     }
 
 
@@ -111,5 +112,10 @@ class PostsController extends Controller
         $posts = Posts::all()->where('user_id',$user);
         return view('about',compact('posts'));
 
+    }
+    public function about_index()
+    {
+        $posts = Posts::all();
+        return view('about',compact('posts'));
     }
 }
