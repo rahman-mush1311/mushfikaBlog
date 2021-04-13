@@ -29,7 +29,8 @@ Route::get('/about','PostsController@about_index'); //return a view(homepage.bla
 Route::get('/blog','PostsController@blog_show'); //return a view(about.blade.php) with posts of particular users all posts.
 Route::get('/create', 'PostsController@create'); // return a view (posts_create.blade.php)
 Route::get('/update','PostsController@edit'); // return a view (posts_update.blade.php)
-Route::post("save_comment/{postid}",'CommentController@save_comment');
+Route::post("save_comment/{postid}",'CommentController@save_comment'); //saves comments in comment controller er custom file e jabe
+Route::get("search_show",'PostsController@search_show');
 
 Route::resource("posts",PostsController::class); //posts url jekhane pabe controller class er show method e giye particular post k show kore post.blade.php view return korbe
 Route::resource("comment",CommentController::class);// apatoto commentcontroller class er store method tai kaj kortese

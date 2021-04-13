@@ -120,7 +120,15 @@ class PostsController extends Controller
     }
     public function search_show()
     {
-        if(request()->input('search'))
-            dd(request()->query('search'));
+        $search = request()->input('search');
+        $posts = new Posts;
+        if($search){
+          $posts = Posts::where ('title','LIKE',"%$search%")->get();
+        }
+        if($posts || $search == 'null')
+            return "doesn't exsist";
+        else
+            return dd( $posts);
+
     }
 }

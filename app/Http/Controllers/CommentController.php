@@ -33,7 +33,7 @@ class CommentController extends Controller
 
     public function index()
     {
-        dd(request()->query('search'));
+        //dd(request()->input('search'));
     }
 
     public function create()
