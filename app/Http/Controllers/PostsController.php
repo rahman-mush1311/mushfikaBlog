@@ -93,9 +93,9 @@ class PostsController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        /*$postsLst = Posts::find($id);
-        //$postsLst->delete();
-        $request->session()->flash('message','delete button working with message');*/
+        $postsLst = Posts::find($id);
+        $postsLst->delete();
+        $request->session()->flash('message','delete button working with message');
         $user= Auth::user()->id;
         $posts = Posts::all()->where('user_id',$user);
         return view('about',compact('posts'));
