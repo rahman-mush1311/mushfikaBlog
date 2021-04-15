@@ -13,6 +13,7 @@
     @endsection('header')
 
     @section('content')
+
         <!-- end #header -->
             <div id="menu">
                 <ul>
@@ -41,7 +42,7 @@
                             @foreach($posts as $post)
                                 <div class="post">
                                     <h2 class="title">{{$post->title}} </h2>
-                                    <p class="meta">Posted by <a href="#">Someone</a> {{$post->created_at}}
+                                    <p class="meta">Posted by: <strong>{{$post->user->name}} </strong>&nbsp {{$post->created_at}}
 
                                         &nbsp;&bull;&nbsp; <a href="#" class="comments"></a> &nbsp;&bull;&nbsp; <a href="{{route('posts.show',$post->id)}}" class="permalink">Full article</a></p>
 

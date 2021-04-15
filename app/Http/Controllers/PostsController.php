@@ -68,39 +68,34 @@ class PostsController extends Controller
     }
 
 
-    public function edit(Posts $posts)
+    public function edit($id)
     {
       //  return "edit route working";
-        return view('post_update');
+        $postsLst = Posts::find($id);
+        return view('post_update',compact('postsLst'));
     }
 
 
     public function update(Request $request,  $id)
     {
+
        // return view('posts_update', ['tags'=>Tag::all()]);
-       /* $posts = Posts::find($id);
+        $posts = Posts::find($id);
         $posts->title=$request->input('title');
         $posts->short=$request->input('short');
         $posts->des=$request->input('des');
-        $posts->save();*/
+        $posts->save();
         //return "update route working";
 
-        //$posts = Posts::all();
-        //return $posts;
-       // return view('about',compact('posts'));
-      //  return $this->index();
-
-       // Route::redirect('about');
-       // Route::resource("about",PostsController::class,['index']);
-        return redirect ('about');
+        return redirect ('blog');
     }
 
 
     public function destroy(Request $request, $id)
     {
-        $postsLst = Posts::find($id);
-        $postsLst->delete();
-        $request->session()->flash('message','delete button working with message');
+        /*$postsLst = Posts::find($id);
+        //$postsLst->delete();
+        $request->session()->flash('message','delete button working with message');*/
         $user= Auth::user()->id;
         $posts = Posts::all()->where('user_id',$user);
         return view('about',compact('posts'));
@@ -132,8 +127,8 @@ class PostsController extends Controller
         $posts = Posts::where ('title','LIKE',"%$search_text%")->with('tag')->get();
 
         if($posts || $search_text == 'null') {
-            $request->session()->flash('message', 'Your search query doesnot exsist');
-            return redirect('about');
+            $request->session()->flash('message', 'Your desired title doesnot exsist');
+            return redirect('home');
         }
         else
            // return dd($posts);

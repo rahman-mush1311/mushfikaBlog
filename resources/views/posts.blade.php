@@ -41,18 +41,26 @@
                                         @foreach($posts->tag as $tags)
                                         <p>{{$tags->name}}</p>
                                         @endforeach
+                                        <p> {{$posts->des}}</p>
+                                    </div>
+                                    <div>
                                         @auth
-                                        @if(Auth::user()->id == $posts->user->id)
+                                            @if(Auth::user()->id == $posts->user->id)
                                                 <form method="post" action="{{route('posts.destroy',$posts->id)}}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <input value="Delete" type="submit"/>
+                                                    <input value="Delete This Post" type="submit"/>
                                                 </form>
-                                        @endif
+                                                <br>
+                                                <form action="{{route('posts.edit',$posts->id)}}">
+                                                    @csrf
+
+                                                    <input value="Edit This Post" type="submit"/>
+                                                </form>
+                                            @endif
                                         @endauth
                                     </div>
                                 </div>
-
 
                             <div style="clear: both;">&nbsp;</div>
                             <div class="container">

@@ -29,17 +29,17 @@
                 <div id="page-bgtop">
                     <div id="page-bgbtm">
                         @auth
-                        <form method="POST" action="{{route('posts.update',1)}}">
+                        <form method="POST" action="{{route('posts.update',$postsLst->id)}}">
                             @csrf
                             @method('PUT')
                             <label for="title">Title</label>
-                            <input type="text" id="title" name="title" placeholder="Your Title Goes Here">
+                            <input type="text" id="title" name="title" placeholder="Your Title Goes Here" value="{{$postsLst->title}}">
 
                             <label for="short">Short Description</label>
-                            <input type="text" id="short" name="short" placeholder="Short Description for Post">
+                            <input type="text" id="short" name="short" placeholder="Short Description for Post" value="{{$postsLst->short}}">
 
                             <label for="des">Description</label>
-                            <textarea id="des" name="des" placeholder="Description goes here" style="height:200px"></textarea>
+                            <textarea id="des" name="des" placeholder="Description goes here" style="height:200px" value="{{$postsLst->des}}"></textarea>
 
                             <input type="submit" value="Update Post">
                         </form>

@@ -13,6 +13,7 @@
 @endsection
 
 @section('content')
+    {{session('message')}}
     <!-- end #header -->
     <div id="menu">
         <ul>
