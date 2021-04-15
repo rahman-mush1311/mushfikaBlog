@@ -20,6 +20,7 @@ Released   : 20111121
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <!-- <link href="style.css" rel="stylesheet" type="text/css" media="screen" />-->
     <link href="{{asset('/')}}/style.css" rel="stylesheet" type="text/css" media="screen" />
+    <script src="{{ asset('js/app.js')}}"></script>
 </head>
 <body>
 @yield('header')

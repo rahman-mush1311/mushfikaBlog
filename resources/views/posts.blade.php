@@ -46,16 +46,19 @@
                                     <div>
                                         @auth
                                             @if(Auth::user()->id == $posts->user->id)
-                                                <form method="post" action="{{route('posts.destroy',$posts->id)}}">
+                                                <a class= "btn-primary" href="#" onclick="deleteConfirm('delete_test')">Delete this Post</a>
+                                                <form id="delete_test" method="post" action="{{route('posts.destroy',$posts->id)}}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <input value="Delete This Post" type="submit"/>
+                                                  <!--  <input value="Delete This Post" type="submit"/> -->
                                                 </form>
                                                 <br>
-                                                <form action="{{route('posts.edit',$posts->id)}}">
-                                                    @csrf
 
-                                                    <input value="Edit This Post" type="submit"/>
+                                                <form id="edit_test" action="{{route('posts.edit',$posts->id)}}">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <a class= "btn-primary" onclick="window.location='{{route('posts.edit',$posts->id)}}'">Edit this Post</a>
+                                                  <!--  <input value="Edit This Post" type="submit"/>-->
                                                 </form>
                                             @endif
                                         @endauth

@@ -416,3 +416,15 @@ form.example button {
     border-left: none; /* Prevent double borders */
     cursor: pointer;
 }
+.btn-primary {
+    background-color: #000000;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 2px 2px;
+    cursor: pointer;
+}
