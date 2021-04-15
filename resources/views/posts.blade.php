@@ -43,7 +43,11 @@
                                         @endforeach
                                         @auth
                                         @if(Auth::user()->id == $posts->user->id)
-                                            <p>Delete Button will be places here</p>
+                                                <form method="post" action="{{route('posts.destroy',$posts->id)}}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <input value="Delete" type="submit"/>
+                                                </form>
                                         @endif
                                         @endauth
                                     </div>

@@ -6,12 +6,8 @@
             <div id="header">
                 <div id="logo">
                     @auth
-                        <h1><a href="#">All blogs of {{Auth::user()->name}} </a></h1>
+                        <h1><a href="#">Search Result {{Auth::user()->name}} </a></h1>
                         <p>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a></p>
-                    @elseguest
-                    <h1><a href="#">Hi Guest Please Sign in </a></h1>
-                        <p>By clicking home you will be redirected to loginpage <a> </a></p>
-                    @endauth
 
                 </div>
             </div>
@@ -59,5 +55,6 @@
                 </div>
             </div>
             <!-- end #page -->
+            @endauth
     </div>
 @endsection

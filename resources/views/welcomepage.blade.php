@@ -67,7 +67,7 @@
                 </div>
                 <!-- end #content -->
                 <div class="topnav">
-                    <form class="example" action="{{url('search_show')}}" style="margin:auto;max-width:300px">
+                    <form class="example" method="GET" action="{{url('/search_show')}}" style="margin:auto;max-width:300px">
                         <input type="text" placeholder="Search.." name="search">
                         <button type="submit"><i class="fa fa-search"></i></button>
                     </form>

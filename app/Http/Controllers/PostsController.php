@@ -96,9 +96,15 @@ class PostsController extends Controller
     }
 
 
-    public function destroy(Posts $posts)
+    public function destroy(Request $request, $id)
     {
-        //
+        $postsLst = Posts::find($id);
+        $postsLst->delete();
+        $request->session()->flash('message','delete button working with message');
+        $user= Auth::user()->id;
+        $posts = Posts::all()->where('user_id',$user);
+        return view('about',compact('posts'));
+       // return "posts route working";
     }
     public function logout(Request $request)
     {
@@ -118,17 +124,20 @@ class PostsController extends Controller
         $posts = Posts::all();
         return view('about',compact('posts'));
     }
-    public function search_show()
+    public function search_show(Request $request)
     {
-        $search = request()->input('search');
+       // $search = request()->input('search');
+        $search_text = $_GET['search'];
         $posts = new Posts;
-        if($search){
-          $posts = Posts::where ('title','LIKE',"%$search%")->get();
+        $posts = Posts::where ('title','LIKE',"%$search_text%")->with('tag')->get();
+
+        if($posts || $search_text == 'null') {
+            $request->session()->flash('message', 'Your search query doesnot exsist');
+            return redirect('about');
         }
-        if($posts || $search == 'null')
-            return "doesn't exsist";
         else
-            return dd( $posts);
+           // return dd($posts);
+            return view ('search_show',compact('posts'));
 
     }
 }
